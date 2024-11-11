@@ -1,29 +1,33 @@
-from typing import Any
+from typing import TypeVar, Self
+
+T = TypeVar("T")
+
 
 class ObjList:
-    __next: 'ObjList | None' = None
-    __prev: 'ObjList | None' = None
+    __next: Self | None = None
+    __prev: Self | None = None
     __data = None
     
-    def __init__(self, data: Any) -> None:
+    
+    def __init__(self, data: TypeVar) -> None:
         self.set_data(data)
 
-    def set_next(self, obj: 'ObjList') -> None:
+    def set_next(self, obj: Self) -> None:
         self.__next = obj
 
-    def set_prev(self, obj: 'ObjList') -> None:
+    def set_prev(self, obj: Self) -> None:
         self.__prev = obj
 
-    def set_data(self, data: Any) -> None:
+    def set_data(self, data: T) -> None:
         self.__data = data
 
-    def get_next(self) -> 'ObjList | None':
+    def get_next(self) -> Self | None:
         return self.__next
 
-    def get_prev(self) -> 'ObjList | None':
+    def get_prev(self) -> Self | None:
         return self.__prev
 
-    def get_data(self) -> Any:
+    def get_data(self) -> T:
         return self.__data
 
 
@@ -36,7 +40,7 @@ class LinkedList:
     
     # add object in the end of linked list
     def add_obj(self, obj: ObjList | None) -> None:
-        if self.head == None:
+        if self.head is None:
             self.head = obj
         else:
             self.tail.set_next(obj)

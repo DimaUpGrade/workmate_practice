@@ -10,16 +10,16 @@ class Server:
         self.ip = id(self)
         self.router = None
 
-    def send_data(self, data: Data):
+    def send_data(self, data: Data) -> None:
         if self.router:
             self.router.buffer.append(data)
 
-    def get_data(self):
+    def get_data(self) -> list:
         messages = self.buffer.copy()
         self.buffer.clear()
         return messages
 
-    def get_ip(self):
+    def get_ip(self) -> int:
         return self.ip
         
 
@@ -28,14 +28,14 @@ class Router:
         self.buffer = list()
         self.servers = dict()
 
-    def link(self, server: Server):
+    def link(self, server: Server) -> None:
         self.servers[server.get_ip()] = server
         server.router = self
 
-    def unlink(self, server):
+    def unlink(self, server: Server) -> None:
         del self.servers[server.get_ip()]
 
-    def send_data(self):
+    def send_data(self) -> None:
         while self.buffer:
             data = self.buffer.pop()
             server = self.servers[data.ip]
