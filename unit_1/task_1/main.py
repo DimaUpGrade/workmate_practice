@@ -100,15 +100,3 @@ class LinkedList:
                 data.append(current.get_data())
             
         return data
-
-
-# lst = LinkedList()
-# lst.add_obj(ObjList("Данные 1"))
-# lst.add_obj(ObjList("Данные 2"))
-# lst.add_obj(ObjList("Данные 3"))
-# lst.remove_obj()
-# lst.add_obj(ObjList("Данные 4"))
-# res = lst.get_data()
-# print(res)
-
-# print(LinkedList.__doc__)

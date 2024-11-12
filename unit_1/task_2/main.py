@@ -77,6 +77,3 @@ class GamePole:
 
 
 pole_game = GamePole(10, 12)
-
-# Uncomment string below for display of table
-# # pole_game.show()
